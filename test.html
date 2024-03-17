@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #267bb5;
+    }
+
+    #movieResult {
+        margin-top: 20px;
+    }
+</style>
+<body>
+
+<div class="container">
+    <h1>Поиск фильма</h1>
+    <input type="text" id="movieInput" placeholder="Введите название фильма">
+    <button onclick="searchMovie()">Найти</button>
+    <div id="movieResult"></div>
+</div>
+
+<script>
+    const API_URL_SEARCH = "https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=";
+    const API_KEY = "e3d4222b-f20f-42ae-92fd-4935a860065c"; // Замените на свой API ключ
+
+    async function searchMovie() {
+        const movieInput = document.getElementById("movieInput").value;
+        const url = `${API_URL_SEARCH}${encodeURIComponent(movieInput)}`;
+
+        try {
+            const resp = await fetch(url, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-API-KEY": API_KEY,
+                },
+            });
+
+            const respData = await resp.json();
+            displayMovieInfo(respData);
+        } catch (error) {
+            console.error("Ошибка при запросе к API");
+        }
+    }
+
+    function displayMovieInfo(data) {
+        const movieResultDiv = document.getElementById("movieResult");
+        movieResultDiv.innerHTML = "";
+
+        if (data.films.length > 0) {
+            const movie = data.films[0];
+            const movieCard = document.createElement("div");
+            movieCard.classList.add("movie-card");
+
+            const posterImg = document.createElement("img");
+            posterImg.src = movie.posterUrl;
+            posterImg.alt = movie.nameRu;
+
+            const title = document.createElement("h2");
+            title.textContent = movie.nameRu;
+
+            const description = document.createElement("p");
+            description.textContent = movie.description;
+
+            const year = document.createElement("p");
+            year.textContent = `Год: ${movie.year}`;
+
+            const timeLength = document.createElement("p");
+            timeLength.textContent = `Продолжительность: ${movie.filmLength} мин.`;
+
+            movieCard.appendChild(posterImg);
+            movieCard.appendChild(title);
+            movieCard.appendChild(description);
+            movieCard.appendChild(year);
+            movieCard.appendChild(timeLength);
+
+            movieResultDiv.appendChild(movieCard);
+        } else {
+            const errorMessage = document.createElement("p");
+            errorMessage.textContent = "Фильм не найден";
+            movieResultDiv.appendChild(errorMessage);
+        }
+    }
+</script>
+</body>
+</html>

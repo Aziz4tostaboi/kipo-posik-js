@@ -1,0 +1,204 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.header{
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  width: 100%;
+  height: 100px;
+}
+
+.header-logo{
+  width: 220px;
+  height: 80px;
+}
+.search-container{
+    display: flex;
+    align-items: center;
+   border-radius: 5px;
+     background-color:#373737 ;
+      padding: 0 10px;
+}
+.search-input{
+  border-radius: 5px;
+  border: none;
+  width: 280px;
+  height: 40px;
+  background-color: #373737;
+  color: white;
+  outline: none;
+  padding: 0 10px 0 10px;
+}
+.header-button{
+  border:  none;
+  background-color:#373737 ;
+  cursor: pointer;
+}
+.bx-search-alt-2{
+  color: white;
+  font-size: 20px;
+  margin-top: 8px;
+}
+.navigation{
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.link{
+  text-decoration: none;
+  color: hsl(0deg 0% 63.14%);
+  font-size: 20px;
+  cursor: pointer;
+}
+.article{
+  width: 100%;
+  height: 100%;
+  padding: 10px 0;
+  margin: 100px 0 0 0 ;
+}
+.container-movie-news-card{
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+.movie-card-news{
+  display: flex;
+  align-items:center;
+  gap: 10px;
+  flex-direction: column;
+  width: 450px;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.movie-card-news:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.img-news{
+  width: 100%;
+  height: 200px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.title-news{
+  font-size: 25px;
+}
+.text-news{
+  font-size: 15px;
+}
+.read-more{
+  color: orange;
+  text-decoration: none;
+  cursor: pointer;
+}
+.movie-info-card{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 1200px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 0 auto;
+}
+.movie-card-info-img-poster{
+  width: 500px;
+  height: 500px;
+}
+.movie-card-info-title{
+  font-size: 50px;
+}
+.movie-card-info-description{
+  font-size: 20px;
+}
+.movie-card-info-year{
+  color: orange;
+  font-size: 20px;
+}
+.movie-card-info-time-length{
+  color: orange;
+}
+.container-movie-top-films{
+  display: none;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+.movie-top-card{
+  width: 350px;
+  height: 350px;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.movie-top-card:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.movie-card-top-img{
+  width: 300px;
+  height: 300px;
+}
+
+.footer{
+  background-color: black;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+
+  width: 80%;
+  border-top: 1px solid white;
+}
+.footer-item-subtitle{
+  color: white;
+}
+.footer-item-subtitle::after{
+  content: "+18";
+  font-size: 12px;
+}
+.footer-item-list{
+  display: flex;
+  gap: 10px;
+}
+.footer-item-list-item{
+  color: white;
+  list-style: none;
+}
+.footer-item-text{
+  color: white;
+}
+.footer-item-text::after{
+  content: "Яндекс";
+  font-size: 18px;
+  color: red;
+}
